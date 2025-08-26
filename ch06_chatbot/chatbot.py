@@ -1,18 +1,21 @@
-import streamlit as st
-from openai import OpenAI 
+import streamlit as st # st라는 이름으로 스트림릿 라이브러리 선언.
+from openai import OpenAI # openai라는 이름으로 openAI 라이브러리 호출. 
 
 # main() 함수 선언
 def main():
 	# 메인 화면 구성
-	st.set_page_config(layout="wide")
-	st.title("친근한 AI 챗봇")
+	st.set_page_config(layout="wide") # wide 레이아웃으로 페이지를 생성. wide 외에는 centered라는 옵션만 있음.
+	#st.set_page_config(layout="centered")
+	st.title("경진의 친근한 AI 챗봇")
 	st.caption("스트림릿과 OpenAI API를 활용한 간단한 챗봇")
 	# 사이드바 구성
 	with st.sidebar:
-		st.subheader("OpenAI API Key 설정")
+		st.subheader("OpenAI API Key 설정") # 사이드바 제목 설정.
 		# 입력 위젯 유형 설정(비밀번호)
 		openai_api_key = st.text_input("OpenAI API Key", type="password")
-		st.write("[OpenAI API Key 받기](https://platform.openai.com/account/api-keys)")
+		st.write("[OpenAI API Key 받기](https://platform.openai.com/account/api-keys)") # 요소 위 텍스트 생성
+		# st.write("streamlit은 이런 식으로 요소를 추가함");
+
 	# 시스템 프롬프트 추가
 	system_message = """
 	너의 이름은 친구 봇이야.
@@ -22,6 +25,7 @@ def main():
 	한글이 아닌 답변을 하게 되면 다시 생각해서 답변을 꼭 한글로 만들어줘.
 	모든 답변 끝에 답변에 맞는 이모티콘도 추가해줘.
 	"""
+	
 	# 대화 내용 관리를 위한 세션 상태 설정
 	if "messages" not in st.session_state:
 		st.session_state.messages = [{"role": "system", "content": system_message}]
