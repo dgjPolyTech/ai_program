@@ -5,7 +5,7 @@ from openai import OpenAI
 def main():
     # 2. 메인 페이지 화면 구성
     st.set_page_config(layout = "wide")
-    st.title("친근한 AI 챗봇(셀프)")
+    st.title("나만의 AI 챗봇")
     st.caption("스트림릿과 OpenAI API를 활용한 간단한 챗봇")
 
     # 3. sidebar 추가
